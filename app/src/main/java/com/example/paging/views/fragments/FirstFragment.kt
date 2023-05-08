@@ -5,19 +5,22 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.paging.R
+import com.example.paging.adapter.QuoteAdapter
 import com.example.paging.databinding.FragmentFirstBinding
+import com.example.paging.viewmodel.QuoteViewModel
 
-/**
- * A simple [Fragment] subclass as the default destination in the navigation.
- */
+
 class FirstFragment : Fragment() {
 
     private var _binding: FragmentFirstBinding? = null
+    private lateinit var quoteViewModel: QuoteViewModel
 
-    // This property is only valid between onCreateView and
-    // onDestroyView.
+
     private val binding get() = _binding!!
 
     override fun onCreateView(
@@ -36,6 +39,14 @@ class FirstFragment : Fragment() {
         binding.buttonFirst.setOnClickListener {
             findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)
         }
+        //       quoteViewModel = ViewModelProvider(this)[QuoteViewModel::class.java]
+        //       val adapter = QuoteAdapter()
+//        binding.recyclerView.layoutManager = LinearLayoutManager(context)
+//        binding.recyclerView.adapter = adapter
+//        quoteViewModel.list.observe(viewLifecycleOwner, Observer {
+//            adapter.submitData(lifecycle,it)
+//        })
+
     }
 
     override fun onDestroyView() {
