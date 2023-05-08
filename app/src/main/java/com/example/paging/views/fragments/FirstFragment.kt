@@ -1,4 +1,4 @@
-package com.example.paging
+package com.example.paging.views.fragments
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
+import com.example.paging.R
 import com.example.paging.databinding.FragmentFirstBinding
 
 /**
