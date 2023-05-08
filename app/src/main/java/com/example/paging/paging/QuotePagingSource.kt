@@ -5,7 +5,7 @@ import androidx.paging.PagingState
 import com.example.paging.api.QuoteApi
 import com.example.paging.model.Result
 
-class QuotePagingSource(val quoteApi: QuoteApi):PagingSource<Int,Result>() {
+class QuotePagingSource(private val quoteApi: QuoteApi):PagingSource<Int,Result>() {
 
     override fun getRefreshKey(state: PagingState<Int, Result>): Int? {
         return state.anchorPosition?.let {
