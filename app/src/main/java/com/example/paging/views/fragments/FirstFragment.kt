@@ -11,6 +11,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.paging.R
+import com.example.paging.adapter.LoaderAdapter
 import com.example.paging.adapter.QuoteAdapter
 import com.example.paging.api.NetworkModule
 import com.example.paging.api.QuoteApi
@@ -52,7 +53,7 @@ class FirstFragment : Fragment() {
         val adapter = QuoteAdapter()
 
         binding.recyclerView.layoutManager = LinearLayoutManager(context)
-        binding.recyclerView.adapter = adapter
+        binding.recyclerView.adapter = adapter.withLoadStateHeaderAndFooter(header = LoaderAdapter(), footer = LoaderAdapter())
 
         binding.recyclerView.addItemDecoration(DividerItemDecoration(requireContext(),DividerItemDecoration.VERTICAL))
 
