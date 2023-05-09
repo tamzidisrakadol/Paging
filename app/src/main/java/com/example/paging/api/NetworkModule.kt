@@ -13,4 +13,5 @@ object NetworkModule {
             .build()
             .create(QuoteApi::class.java)
     }
+
 }
