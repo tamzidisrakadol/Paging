@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import androidx.paging.ExperimentalPagingApi
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.paging.R
@@ -17,10 +18,11 @@ import com.example.paging.api.NetworkModule
 import com.example.paging.api.QuoteApi
 import com.example.paging.databinding.FragmentFirstBinding
 import com.example.paging.repository.QuoteRepository
+import com.example.paging.storage.QuoteDatabase
 import com.example.paging.viewmodel.QuoteViewModel
 import com.example.paging.viewmodel.QuoteViewModelFactory
 
-
+@ExperimentalPagingApi
 class FirstFragment : Fragment() {
 
     private var _binding: FragmentFirstBinding? = null
@@ -47,7 +49,9 @@ class FirstFragment : Fragment() {
         }
 
         val api = NetworkModule.getRetrofit()
-        val repository = QuoteRepository(api)
+        val quoteDatabase = QuoteDatabase.getDatabase(requireContext())
+        val repository = QuoteRepository(api,quoteDatabase)
+
         quoteViewModel = ViewModelProvider(this,QuoteViewModelFactory(repository))[QuoteViewModel::class.java]
 
         val adapter = QuoteAdapter()

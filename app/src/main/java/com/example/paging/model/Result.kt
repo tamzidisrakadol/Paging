@@ -18,14 +18,9 @@ data class Result(
     val dateAdded: String,
     @SerializedName("dateModified")
     val dateModified: String,
-
     @PrimaryKey(autoGenerate = false)
     @SerializedName("_id")
     val id: String,
-
-
     @SerializedName("length")
     val length: Int,
-    @SerializedName("tags")
-    val tags: List<String>
 )
